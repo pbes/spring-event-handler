@@ -1,0 +1,39 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: dev1
+    password: Password1
+    virtual-host: vhost
+  cloud:
+    stream:
+      bindings:
+        uppercase-in-0:
+          destination: uppercase-in
+          group: default
+        uppercase-out-0:
+          destination: uppercase-out
+          group: default
+        createuser-in-0:
+          destination: createuser-in
+          group: default
+        createuser-out-0:
+          destination: createuser-out
+          group: default
+        uppercaselogger-in-0:
+          destination: uppercase-out
+          group: default
+      default-binder: rabbit
+      binders:
+        rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: dev1
+                password: Password1
+                virtual-host: vhost
+    function:
+      definition: uppercase;createUser;uppercaseLogger

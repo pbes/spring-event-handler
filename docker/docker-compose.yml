@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  spring-event-handler-rabbitmq:
+    image: rabbitmq:3.12.0-management
+    container_name: spring-event-handler-rabbitmq
+    hostname: spring-event-handler-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: dev1
+      RABBITMQ_DEFAULT_PASS: Password1
+      RABBITMQ_DEFAULT_VHOST: 'vhost'
+    ports:
+      - '5672:5672'
+      - '15672:15672'
